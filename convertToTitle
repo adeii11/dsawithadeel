@@ -1,0 +1,16 @@
+class Solution {
+    public String convertToTitle(int columnNumber) {
+        Map<Integer,String>map=new HashMap<>();
+        int i=1;
+        for (char ch = 'A'; ch <= 'Z'; ++ch){
+            map.put(i++,String.valueOf(ch));
+        }
+        StringBuilder result=new StringBuilder("");
+        while(columnNumber>0){
+            int rem=(columnNumber-1)%26;
+            result.insert(0,map.get(rem+1));
+            columnNumber=(columnNumber-1)/26;
+        }
+        return result.toString();
+    }
+}
